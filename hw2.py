@@ -52,7 +52,7 @@ class SarcasmDataset(Dataset):
         tokens = self.tokenizer.encode_plus(text, add_special_tokens=True, max_length = self.max_length, padding='max_length',
         truncation=True, return_tensors='pt')
         dictionary = {}
-        dictionary['label'] = torch.tensor([label], dtype=torch.long)
+        dictionary['label'] = torch.tensor(label, dtype=torch.long)
         dictionary['input_ids'] = tokens['input_ids'].flatten()
         dictionary['attention_mask'] = tokens['attention_mask'].flatten()
         return dictionary
